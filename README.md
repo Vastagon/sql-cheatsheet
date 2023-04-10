@@ -1,4 +1,5 @@
 # sql-cheatsheet
+1 hour 21 minutes https://www.youtube.com/watch?v=qw--VYLpxG4&t=1021s
 
 Datatypes: https://www.postgresql.org/docs/current/datatype.html
 
