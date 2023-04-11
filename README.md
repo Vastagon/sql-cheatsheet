@@ -33,7 +33,7 @@ Exit from the enter for more options
 
 
 
-# `Querying Data`
+# Querying Data
 
 Select Data in order
 ### `select * from person ORDER BY id DESC;`
@@ -74,7 +74,7 @@ More advanced SQL that shows the max price for each make
 
 
 
-# `Editing a table`
+# Editing a table
 
 Dropping a primary key in a table
 ### `ALTER TABLE person DROP CONSTRAINT person_pkey;` 
@@ -99,7 +99,7 @@ Delete a row in your table where id = 1
 
 
 
-# `Dealing with NULL Values and Error Handling`
+# Dealing with NULL Values and Error Handling
 
 COALESCE Keyword will default to another value if the first value is null. This will set the value as 1
 ### `SELECT COALESCE(null, 1)`
@@ -119,7 +119,7 @@ This means dividing by zero can result in a null value rather than throwing an e
 
 
 
-# `Dates and Time`
+# Dates and Time
 
 Use NOW() to select the current time. You can change the format with double colins
 ### `SELECT NOW()::DATE;`
@@ -137,7 +137,7 @@ Use AGE() to find the amount of time between two dates
 
 
 
-# `Primary Keys`
+# Primary Keys
 - They cannot be duplicated
 - User to identify a row of a table
 
@@ -145,7 +145,7 @@ Use AGE() to find the amount of time between two dates
 
 
 
-# `Other`
+# Other
 
 Require a column to hold specific data using a constraint
 ### `ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');`
