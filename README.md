@@ -2,20 +2,24 @@
 1 hour 21 minutes https://www.youtube.com/watch?v=qw--VYLpxG4&t=1021s
 
 Datatypes: https://www.postgresql.org/docs/current/datatype.html
+Aggregate Functions: https://www.postgresql.org/docs/9.5/functions-aggregate.html
 
 Create SQL Data: https://mockaroo.com/
 
 Help
-### `\?`
+# `\?`
 
 Database list
-### `\l`
+## `\l`
 
 Select Database
 ### `\c <database name>`
 
 Clear PSQL history
 ### `\! cls`
+
+Import data
+### `\i 'D:/Downloads/person.sql'`
 
 See all tables in database
 ### `\d`
@@ -38,9 +42,45 @@ Select between two values
 Select with LIKE
 ### `SELECT * FROM person WHERE email LIKE '%@bloomberg.com';`
 These percent signs are like asterisks with CWM. One at the beginning searches for anything at the beginning, but wants it to end with what you have after it  
+You can use underscores to represent a number of characters as well
+### `SELECT * FROM person WHERE email LIKE '______@%';`
 
-Import data
-### `\i 'D:/Downloads/person.sql'`
+ILIKE ignores uppercase and lowercase
+### `SELECT * FROM person WHERE email ILIKE '______@%';`
+
+You can find the number of times an item is in a DB by using the COUNT() function
+### `SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY COUNT(*);`
+
+HAVING keyword
+### `SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5 ORDER BY COUNT(*);`
+
+Find max and min and average of price. Use ROUND to average with a round at the end
+### `SELECT MAX(price) FROM car;`
+
+More advanced SQL that shows the max price for each make
+### `SELECT make, MAX(price) FROM car GROUP BY make;`
+
+COALESCE Keyword will default to another value if the first value is null. This will set the value as 1
+### `SELECT COALESCE(null, 1)`
+
+You can use these in SELECTs as well. This will return "Email not provided" if email is null for a user
+### `SELECT COALESCE(email, 'Email not provided') FROM person;`
+
+NULLIF checks if a both values are the same. If it is it returns null, otherwise it returns the rist number
+### `SELECT NULLIF(10, 10);` This returns null
+### `SELECT NULLIF(20, 10);` This returns 20
+
+This means dividing by zero can result in a null value rather than throwing an error. Or you can return another value with COALESCE
+### `SELECT COALESCE(10 / NULLIF(0,0), 0);`
+
+
+
+Use NOW() to select the current time. You can change the format with double colins
+### `SELECT NOW()::DATE;`
+
+You can take this further by manipulating this time data. This gets the current date and moves it back a year
+### `SELECT NOW() - INTERVAL '1 YEAR';`
+
 
 You can have SQL return true and false.
 
