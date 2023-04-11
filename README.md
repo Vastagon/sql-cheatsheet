@@ -6,11 +6,15 @@ Aggregate Functions: https://www.postgresql.org/docs/9.5/functions-aggregate.htm
 
 Create SQL Data: https://mockaroo.com/
 
+
+
+# `Simple General Commands`
+
 Help
-# `\?`
+### `\?`
 
 Database list
-## `\l`
+### `\l`
 
 Select Database
 ### `\c <database name>`
@@ -26,6 +30,10 @@ See all tables in database
 
 Exit from the enter for more options
 ### `\q`
+
+
+
+# `Querying Data`
 
 Select Data in order
 ### `select * from person ORDER BY id DESC;`
@@ -60,6 +68,39 @@ Find max and min and average of price. Use ROUND to average with a round at the 
 More advanced SQL that shows the max price for each make
 ### `SELECT make, MAX(price) FROM car GROUP BY make;`
 
+
+
+
+
+
+
+# `Editing a table`
+
+Dropping a primary key in a table
+### `ALTER TABLE person DROP CONSTRAINT person_pkey;` 
+
+Add a primary key to a table named person
+### `ALTER TABLE person ADD PRIMARY KEY (id);`
+
+Delete a row from a table where id is 1
+### `DELETE FROM person WHERE id = 1;`
+
+Create a unique constraint
+### `ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE(email);`
+
+Dropping the same unique constraint
+### `ALTER TABLE person DROP CONSTRAINT unique_email_address;`
+
+Delete a row in your table where id = 1
+### `DELETE FROM person WHERE id = 1;`
+
+
+
+
+
+
+# `Dealing with NULL Values and Error Handling`
+
 COALESCE Keyword will default to another value if the first value is null. This will set the value as 1
 ### `SELECT COALESCE(null, 1)`
 
@@ -75,11 +116,42 @@ This means dividing by zero can result in a null value rather than throwing an e
 
 
 
+
+
+
+# `Dates and Time`
+
 Use NOW() to select the current time. You can change the format with double colins
 ### `SELECT NOW()::DATE;`
 
 You can take this further by manipulating this time data. This gets the current date and moves it back a year
 ### `SELECT NOW() - INTERVAL '1 YEAR';`
+
+Extracting data from a date. This extracts the year
+### `SELECT EXTRACT(YEAR FROM NOW());`
+
+Use AGE() to find the amount of time between two dates
+### `SELECT date_of_birth, AGE(NOW(), date_of_birth) FROM person ORDER BY date_of_birth;`
+
+
+
+
+
+# `Primary Keys`
+- They cannot be duplicated
+- User to identify a row of a table
+
+
+
+
+
+# `Other`
+
+Require a column to hold specific data using a constraint
+### `ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');`
+
+
+
 
 
 You can have SQL return true and false.
