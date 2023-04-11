@@ -151,7 +151,7 @@ Use AGE() to find the amount of time between two dates
 
 # Foreign Keys
 - A foreign key is a column that references a primary key in another table
-- 
+- Can only assign foreign keys where there is a relation in the other table
 
 
 
