@@ -94,6 +94,12 @@ Dropping the same unique constraint
 Delete a row in your table where id = 1
 ### `DELETE FROM person WHERE id = 1;`
 
+Update a row in your table where id = 1. Use a comma to change multiple values
+### `UPDATE person SET email = 'jacob@gmail.com' WHERE id=1;`
+### `UPDATE person SET first_name = 'Jacob', last_name = 'Yancey' WHERE id = 2;`
+
+
+
 
 
 
@@ -143,6 +149,11 @@ Use AGE() to find the amount of time between two dates
 
 
 
+# Foreign Keys
+- A foreign key is a column that references a primary key in another table
+- 
+
+
 
 
 # Other
@@ -150,6 +161,11 @@ Use AGE() to find the amount of time between two dates
 Require a column to hold specific data using a constraint
 ### `ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');`
 
+Handle conflicts and errors with "ON CONFLICT(). If a unique value already exists and it gived you an error add an "ON CONFLICT"
+### `INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) values(1, 'Jake', 'Yance', 'Male', 'email@gmail.com', DATE '2002-05-29', 'United States') ON CONFLICT(id) DO NOTHING`
+
+Update something with ON CONFLICT(). Can user commas for multiple values if you want
+### `INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) values(1, 'Jake', 'Yance', 'Male', 'jacob@gmail.com', DATE '2002-05-29', 'United States') ON CONFLICT(id) DO UPDATE SET email = EXCLUDED.email, first_name = 'Jacob';`
 
 
 
