@@ -8,7 +8,7 @@ Create SQL Data: https://mockaroo.com/
 
 
 
-# `Simple General Commands`
+# Simple General Commands
 
 Help
 ### `\?`
