@@ -147,12 +147,28 @@ Use AGE() to find the amount of time between two dates
 - They cannot be duplicated
 - User to identify a row of a table
 
+# Inner Joins
+- Used to create a combined table
+- ON keyword takes a column to join two tables
+### `SELECT * FROM person JOIN car ON person.car_id = car.id;`
+This allows you to get just the values you want from the two tables
+### `SELECT person.first_name, car.make, car.model, car.price FROM person JOIN car ON person.car_id = car.id;`
+
+
+# Left Joins
+- Includes all the rows from the left table and the records from the other table, instead of just those who have a foreign key
+###  `SELECT * FROM person LEFT JOIN car ON person.car_id = car.id;`
 
 
 # Foreign Keys
 - A foreign key is a column that references a primary key in another table
-- Can only assign foreign keys where there is a relation in the other table
+- Can only assign foreign keys where there is a relation in the other table  
 
+
+
+# Bigserial and data types
+- Also called bigint
+- Gets a default value that's managed by a sequence
 
 
 
