@@ -18,7 +18,7 @@ create table users (
 
 CREATE TABLE cart ( /* When a purchase is complete, we assign a new cart to the user. We can store the old cart id's in the users table to be able to reference old orders. */
   id BIGSERIAL NOT NULL PRIMARY KEY,
-  user_id integer NOT NULL,
+  user_id BIGSERIAL UNIQUE NOT NULL REFERENCES users (id),
   discount integer,
   state_tax integer,
   local_tax integer,
@@ -28,8 +28,8 @@ CREATE TABLE cart ( /* When a purchase is complete, we assign a new cart to the 
 
 CREATE TABLE cartItems {
   id BIGSERIAL NOT NULL PRIMARY KEY,
-  cart_id BIGSERIAL NOT NULL,
-  item_id BIGSERIAL NOT NULL,
+  cart_id BIGSERIAL NOT NULL REFERENCES cart (id),
+  item_id BIGSERIAL NOT NULL REFERENCES items (item_id),
   quantity integer NOT NULL, /* Number of this item */
   final_total_purchase_cost DOUBLE /* Total cost of the item after tax and everything else. Can reference this for previous purchases if prices change, this amount stays the same. */
 };
