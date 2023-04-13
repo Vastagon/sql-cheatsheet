@@ -8,17 +8,30 @@ CREATE TABLE items (
 );
 
 create table users (
-  id BIGSERIAL [primary key]
-  username VARCHAR
-  email VARCHAR UNIQUE
-  cart_id BIGSERIAL UNIQUE
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  username VARCHAR(50),
+  email VARCHAR(250) UNIQUE NOT NULL,
+  cart_id BIGSERIAL UNIQUE NOT NULL,
+  purchased_orders TEXT [], /* Once a cart gets purchased. Add that id to this array, so we can see order history. */
   created_at timestamp
 );
 
-CREATE TABLE cart (
+CREATE TABLE cart ( /* When a purchase is complete, we assign a new cart to the user. We can store the old cart id's in the users table to be able to reference old orders. */
   id BIGSERIAL NOT NULL PRIMARY KEY,
-  user_id integer,
-  item_id BIGSERIAL,
-  created_at timestamp
+  user_id integer NOT NULL,
+  discount integer,
+  state_tax integer,
+  local_tax integer,
+  created_at timestamp,
+  order_processed_at timestamp
 );
+
+CREATE TABLE cartItems {
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  cart_id BIGSERIAL NOT NULL,
+  item_id BIGSERIAL NOT NULL,
+  quantity integer NOT NULL, /* Number of this item */
+  final_total_purchase_cost DOUBLE /* Total cost of the item after tax and everything else. Can reference this for previous purchases if prices change, this amount stays the same. */
+};
+
 
