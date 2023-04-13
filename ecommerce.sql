@@ -3,7 +3,7 @@ CREATE TABLE items (
   title VARCHAR(250) NOT NULL,
   description VARCHAR(500),
   rating INT,
-  price double,
+  price float,
   created_at timestamp 
 );
 
@@ -26,12 +26,12 @@ CREATE TABLE cart ( /* When a purchase is complete, we assign a new cart to the 
   order_processed_at timestamp
 );
 
-CREATE TABLE cartItems {
+CREATE TABLE cartitems (
   id BIGSERIAL NOT NULL PRIMARY KEY,
   cart_id BIGSERIAL NOT NULL REFERENCES cart (id),
-  item_id BIGSERIAL NOT NULL REFERENCES items (item_id),
+  item_id BIGSERIAL NOT NULL REFERENCES items (id),
   quantity integer NOT NULL, /* Number of this item */
-  final_total_purchase_cost DOUBLE /* Total cost of the item after tax and everything else. Can reference this for previous purchases if prices change, this amount stays the same. */
-};
+  final_total_purchase_cost float /* Total cost of the item after tax and everything else. Can reference this for previous purchases if prices change, this amount stays the same. */
+);
 
 
