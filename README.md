@@ -1,7 +1,7 @@
 # sql-cheatsheet
 3 hour 1 minutes https://www.youtube.com/watch?v=qw--VYLpxG4&t=1021s
 
-Datatypes: https://www.postgresql.org/docs/current/datatype.html
+Datatypes: https://www.postgresql.org/docs/current/datatype.html  
 Aggregate Functions: https://www.postgresql.org/docs/9.5/functions-aggregate.html
 
 Create SQL Data: https://mockaroo.com/
