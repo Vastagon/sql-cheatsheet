@@ -172,6 +172,20 @@ This allows you to get just the values you want from the two tables
 
 
 
+# Use UUIDs as Primary Key
+
+
+
+# Extensions
+Install extension to create UUID id's
+### `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
+
+Check available extensions
+### `SELECT * FROM pg_a;`
+### `SELECT * FROM pg_available_extensions;
+
+
+
 # Other
 
 Require a column to hold specific data using a constraint
