@@ -98,6 +98,8 @@ Update a row in your table where id = 1. Use a comma to change multiple values
 ### `UPDATE person SET email = 'jacob@gmail.com' WHERE id=1;`
 ### `UPDATE person SET first_name = 'Jacob', last_name = 'Yancey' WHERE id = 2;`
 
+Removing NOT NULL constraint
+### `ALTER TABLE users ALTER COLUMN cart_id DROP NOT NULL;`
 
 
 
